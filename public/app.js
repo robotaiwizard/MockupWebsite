@@ -5,7 +5,6 @@
   const checkOut = document.getElementById('checkOut');
   const guests = document.getElementById('guests');
   const estimate = document.getElementById('estimate');
-  const confirmation = document.getElementById('confirmation');
   let apartments = [];
 
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -114,7 +113,17 @@
     })
   );
 
-  // Booking form: date limits, live estimate, submission
+  // Map: only load Google's embed after the visitor asks for it (no data to Google by default).
+  document.getElementById('load-map')?.addEventListener('click', () => {
+    const frame = document.createElement('iframe');
+    frame.title = 'Map showing Unleash Athens at Koumarianou 23, Athens';
+    frame.src = 'https://maps.google.com/maps?q=Koumarianou%2023%2C%20Athens%2C%20Greece&z=16&output=embed';
+    frame.referrerPolicy = 'no-referrer';
+    document.getElementById('map-consent').replaceWith(frame);
+  });
+
+  // Booking form: date limits, live estimate and availability, then on to secure payment.
+  const availability = document.getElementById('availability');
   const isoDate = (d) => {
     const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
     return local.toISOString().slice(0, 10);
@@ -133,17 +142,22 @@
     if (!checkIn.value) return;
     checkOut.min = addDays(checkIn.value, 1);
     if (!checkOut.value || checkOut.value <= checkIn.value) checkOut.value = addDays(checkIn.value, 3);
-    updateEstimate();
+    update();
   });
-  checkOut.addEventListener('change', updateEstimate);
+  checkOut.addEventListener('change', update);
   select.addEventListener('change', () => {
     const apt = apartments.find((a) => a.id === select.value);
     if (apt) {
       guests.max = apt.guests;
       if (Number(guests.value) > apt.guests) guests.value = apt.guests;
     }
-    updateEstimate();
+    update();
   });
+
+  function update() {
+    updateEstimate();
+    checkAvailability();
+  }
 
   function updateEstimate() {
     const apt = apartments.find((a) => a.id === select.value);
@@ -160,6 +174,29 @@
     estimate.hidden = false;
   }
 
+  let availabilityRequest = 0;
+  async function checkAvailability() {
+    const apt = select.value, from = checkIn.value, to = checkOut.value;
+    if (!apt || !from || !to || to <= from) {
+      availability.hidden = true;
+      return;
+    }
+    const id = ++availabilityRequest;
+    try {
+      const res = await fetch(`/api/availability?apartment=${encodeURIComponent(apt)}&from=${from}&to=${to}`);
+      const data = await res.json();
+      if (id !== availabilityRequest || !res.ok) return;
+      const free = data.unavailable.length === 0;
+      availability.hidden = false;
+      availability.classList.toggle('is-free', free);
+      availability.textContent = free
+        ? '✓ Available for your dates'
+        : 'Sorry, these dates are not available for this apartment. Please try other dates or another apartment.';
+    } catch {
+      availability.hidden = true;
+    }
+  }
+
   function showErrors(errors) {
     form.querySelectorAll('[data-error-for]').forEach((el) => {
       const msg = errors[el.dataset.errorFor] || '';
@@ -174,9 +211,11 @@
     e.preventDefault();
     const button = form.querySelector('button[type="submit"]');
     const payload = Object.fromEntries(new FormData(form));
+    payload.privacy = document.getElementById('privacy').checked;
+    payload.marketing = document.getElementById('marketing').checked;
     showErrors({});
     button.disabled = true;
-    button.textContent = 'Sending…';
+    button.textContent = 'Reserving your dates…';
 
     try {
       const res = await fetch('/api/bookings', {
@@ -187,30 +226,15 @@
       const data = await res.json();
       if (!res.ok) {
         showErrors(data.errors || { form: 'Something went wrong. Please try again.' });
+        button.disabled = false;
+        button.textContent = 'Continue to secure payment';
         return;
       }
-      const fmt = (iso) => new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
-      document.getElementById('confirmation-text').innerHTML =
-        `Your request for ${/^the /i.test(data.apartmentName) ? '' : 'the '}<strong>${escapeHtml(data.apartmentName)}</strong> from ` +
-        `<strong>${fmt(data.checkIn)}</strong> to <strong>${fmt(data.checkOut)}</strong> ` +
-        `(${data.nights} night${data.nights > 1 ? 's' : ''}, ${euro(data.total)}) has been received. ` +
-        `Your reference is <strong>${escapeHtml(data.reference)}</strong>. We'll email you shortly to confirm.`;
-      form.hidden = true;
-      confirmation.hidden = false;
-      confirmation.focus();
+      window.location.assign(data.checkoutUrl); // Stripe Checkout
     } catch {
       showErrors({ form: 'We couldn\'t reach the server. Please check your connection and try again.' });
-    } finally {
       button.disabled = false;
-      button.textContent = 'Request booking';
+      button.textContent = 'Continue to secure payment';
     }
-  });
-
-  document.getElementById('new-booking').addEventListener('click', () => {
-    form.reset();
-    estimate.hidden = true;
-    confirmation.hidden = true;
-    form.hidden = false;
-    select.focus();
   });
 })();

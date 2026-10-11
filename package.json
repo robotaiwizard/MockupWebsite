@@ -1,11 +1,13 @@
 {
   "name": "unleash-athens",
   "version": "1.0.0",
-  "description": "Website for Unleash Athens, a boutique hotel at Koumarianou 23 below Strefi Hill, Athens",
+  "description": "Website and booking system for Unleash Athens, boutique apartments at Koumarianou 23 below Strefi Hill, Athens",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "create-admin": "node scripts/create-admin.js",
+    "retention": "node -e \"require('./src/db').migrate().then(()=>require('./src/gdpr').runRetention()).then(s=>{console.log(s);process.exit(0)})\""
   },
   "engines": {
     "node": ">=20.12"
@@ -13,7 +15,17 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/jost": "^5.3.0",
     "express": "^4.22.3",
-    "nodemailer": "^10.1.0"
+    "express-rate-limit": "^7.5.1",
+    "helmet": "^8.3.0",
+    "knex": "^3.3.0",
+    "mysql2": "^3.24.5",
+    "nodemailer": "^10.1.0",
+    "stripe": "^23.0.0"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^13.0.3"
   }
 }

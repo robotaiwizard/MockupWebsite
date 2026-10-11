@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin · Unleash Athens</title>
+  <link rel="stylesheet" href="/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/pages.css">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body class="page admin">
+  <header class="site-header">
+    <nav class="nav">
+      <a href="#/" class="brand">Unleash <em>Athens</em> <span class="admin-tag">Admin</span></a>
+      <ul class="admin-nav" id="admin-nav" hidden>
+        <li><a href="#/">Today</a></li>
+        <li><a href="#/bookings">Bookings</a></li>
+        <li><a href="#/calendar">Calendar</a></li>
+        <li><a href="#/guests">Guests</a></li>
+        <li><a href="#/new" class="nav-cta">New booking</a></li>
+        <li class="admin-more">
+          <a href="#/audit">Activity</a>
+          <a href="#/settings">Account</a>
+          <button type="button" class="link-btn" id="logout">Sign out</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-main wide" id="view" aria-live="polite"></main>
+  <script src="/admin.js"></script>
+</body>
+</html>

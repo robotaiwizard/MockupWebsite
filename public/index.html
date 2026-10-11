@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Unleash Athens · Boutique Apartments below Strefi Hill, Athens</title>
   <meta name="description" content="Unleash Athens is a boutique hotel of six apartments with contemporary interiors inside a historic neoclassical townhouse at Koumarianou 23, at the foot of Strefi Hill in central Athens.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/fonts.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23a9532f'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='15' fill='%23f6efe4' text-anchor='middle'%3EUA%3C/text%3E%3C/svg%3E">
 </head>
@@ -22,6 +20,7 @@
         <li><a href="#apartments">Apartments</a></li>
         <li><a href="#location">Strefi Hill</a></li>
         <li><a href="#explore">Explore Athens</a></li>
+        <li><a href="/account">My booking</a></li>
         <li><a href="#book" class="nav-cta">Book a stay</a></li>
       </ul>
     </nav>
@@ -119,11 +118,12 @@
 
         <div class="location-grid">
           <div class="map-card">
-            <iframe
-              title="Map showing Unleash Athens at Koumarianou 23, Athens"
-              src="https://maps.google.com/maps?q=Koumarianou%2023%2C%20Athens%2C%20Greece&z=16&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- The Google map only loads after the visitor agrees, so no data goes to Google by default. -->
+            <div class="map-consent" id="map-consent">
+              <p>The map is provided by Google. Loading it sends your IP address to Google.</p>
+              <button type="button" class="btn btn-small" id="load-map">Show map</button>
+              <a href="/privacy#third-parties">Privacy details</a>
+            </div>
             <div class="address">
               <div>
                 <strong>Unleash Athens</strong><br>
@@ -291,10 +291,11 @@
         <div class="booking-info">
           <p class="eyebrow">Reservations</p>
           <h2>Book your stay</h2>
-          <p>Send us your dates and we'll confirm your reservation by email within a few hours. No payment is taken now.</p>
+          <p>Choose your dates, then pay securely by card, Apple Pay or Google Pay. Your booking is confirmed instantly and you'll receive a confirmation email with a link to manage your stay.</p>
           <ul class="booking-notes">
             <li>Check-in from 15:00 · Check-out by 11:00</li>
-            <li>Free cancellation up to 7 days before arrival</li>
+            <li>Free cancellation up to 7 days before arrival, with a full refund</li>
+            <li>Already booked? <a href="/account">Manage your booking</a></li>
             <li>Luggage storage before check-in and after check-out</li>
             <li>Questions? <a href="mailto:info@unleashathens.com">info@unleashathens.com</a></li>
           </ul>
@@ -342,20 +343,29 @@
             <input type="tel" id="phone" name="phone" autocomplete="tel">
             <p class="error" data-error-for="phone"></p>
           </div>
+          <p class="availability field-full" id="availability" aria-live="polite" hidden></p>
+          <div class="field">
+            <label for="arrivalTime">Estimated arrival <span class="optional">(optional)</span></label>
+            <input type="time" id="arrivalTime" name="arrivalTime">
+          </div>
           <div class="field field-full">
             <label for="notes">Anything we should know? <span class="optional">(optional)</span></label>
-            <textarea id="notes" name="notes" rows="3" placeholder="Arrival time, a cot for the little one, celebrating something…"></textarea>
+            <textarea id="notes" name="notes" rows="3" placeholder="A cot for the little one, celebrating something…"></textarea>
           </div>
+          <label class="check field-full">
+            <input type="checkbox" id="privacy" name="privacy" required>
+            <span>I have read the <a href="/privacy" target="_blank">privacy policy</a> and the cancellation terms (free cancellation up to 7 days before arrival).</span>
+          </label>
+          <p class="error field-full" data-error-for="privacy"></p>
+          <label class="check field-full">
+            <input type="checkbox" id="marketing" name="marketing">
+            <span>Send me occasional news and offers from Unleash Athens (optional, unsubscribe any time).</span>
+          </label>
           <p class="error field-full" data-error-for="form"></p>
-          <button type="submit" class="btn btn-primary field-full">Request booking</button>
+          <button type="submit" class="btn btn-primary field-full">Continue to secure payment</button>
+          <p class="secure-note field-full">Payments are processed by Stripe. We never see or store your card details.</p>
         </form>
 
-        <div class="confirmation" id="confirmation" hidden tabindex="-1">
-          <p class="eyebrow">Ευχαριστούμε · Request received</p>
-          <h3>Thank you!</h3>
-          <p id="confirmation-text"></p>
-          <button class="btn btn-ghost" id="new-booking" type="button">Make another booking</button>
-        </div>
       </div>
     </section>
   </main>
@@ -369,6 +379,7 @@
       <div>
         <p>Koumarianou 23, 114 73 Athens, Greece<br>
         <a href="mailto:info@unleashathens.com">info@unleashathens.com</a></p>
+        <p class="footer-links"><a href="/privacy">Privacy policy</a> · <a href="/account">My booking</a></p>
       </div>
       <p class="copyright">© <span id="year"></span> Unleash Athens</p>
     </div>

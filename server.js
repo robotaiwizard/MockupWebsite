@@ -1,31 +1,57 @@
-// Load SMTP and other settings from .env when present (not committed to git).
-try {
-  process.loadEnvFile();
-} catch {}
+const { config, assertProductionConfig } = require('./src/config');
+assertProductionConfig();
 
 const express = require('express');
+const helmet = require('helmet');
 const path = require('path');
-const crypto = require('crypto');
-const { sendBookingNotification, isMailConfigured, BOOKING_EMAIL_TO } = require('./mailer');
+const fs = require('fs');
+const { migrate } = require('./src/db');
+const { syncApartments } = require('./src/apartments');
+const { sameOriginOnly } = require('./src/auth');
+const { expireStaleHolds } = require('./src/bookings');
+const { runRetention } = require('./src/gdpr');
+const publicRoutes = require('./src/routes/public');
+const guestRoutes = require('./src/routes/guest');
+const adminRoutes = require('./src/routes/admin');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.set('trust proxy', 1); // Hostinger terminates HTTPS in front of the app
+app.disable('x-powered-by');
+
+// Security headers. Everything (fonts, images) is self-hosted; the only third parties are
+// Stripe (we redirect to its checkout page) and the Google map, which loads only on click.
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        imgSrc: ["'self'", 'data:'],
+        fontSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'"],
+        connectSrc: ["'self'"],
+        frameSrc: ['https://www.google.com', 'https://maps.google.com'],
+        formAction: ["'self'"],
+        upgradeInsecureRequests: config.isProduction ? [] : null,
+      },
+    },
+    crossOriginEmbedderPolicy: false,
+  })
+);
+
+// ---------- Pages ----------
+
 const photos = require('./data/photos.json');
-const apartments = require('./data/apartments.json').map((a) => ({ ...a, photo: photos[`apt-${a.id}`] }));
+const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-const escapeHtml = (s) =>
-  String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-
-// Fill <img data-photo="key"> slots and the credits list from data/photos.json, once at startup.
+// Fill <img data-photo="key"> slots and the photo credits from data/photos.json, once at startup.
 function renderIndex() {
-  const html = require('fs').readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
+  const html = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
   const credits = [...new Map(Object.values(photos).filter((p) => p.page).map((p) => [p.page, p])).values()]
     .map(
       (p) =>
         `<li><a href="${escapeHtml(p.page)}" target="_blank" rel="noopener">${escapeHtml(p.title)}</a> by ${escapeHtml(p.author)}, ` +
-        (p.licenseUrl
-          ? `<a href="${escapeHtml(p.licenseUrl)}" target="_blank" rel="noopener">${escapeHtml(p.license)}</a>`
-          : escapeHtml(p.license)) +
+        (p.licenseUrl ? `<a href="${escapeHtml(p.licenseUrl)}" target="_blank" rel="noopener">${escapeHtml(p.license)}</a>` : escapeHtml(p.license)) +
         '</li>'
     )
     .join('\n        ');
@@ -38,107 +64,65 @@ function renderIndex() {
     .replace('{{credits}}', credits);
 }
 const indexHtml = renderIndex();
+const page = (file) => (req, res) => res.sendFile(path.join(__dirname, 'public', file));
 
-app.use(express.json({ limit: '20kb' }));
 app.get(['/', '/index.html'], (req, res) => res.type('html').send(indexHtml));
+app.get('/account', page('account.html'));
+app.get(
+  '/admin',
+  (req, res, next) => {
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    next();
+  },
+  page('admin.html')
+);
+app.get('/privacy', page('privacy.html'));
+app.get(['/booking/success', '/booking/cancelled'], page('booking-result.html'));
+
+// Self-hosted fonts (no requests to Google from visitors' browsers).
+app.use('/fonts/cormorant', express.static(path.join(__dirname, 'node_modules/@fontsource/cormorant-garamond/files'), { maxAge: '365d', immutable: true }));
+app.use('/fonts/jost', express.static(path.join(__dirname, 'node_modules/@fontsource/jost/files'), { maxAge: '365d', immutable: true }));
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
-// Parse a YYYY-MM-DD string as a UTC date so night counts are unaffected by DST.
-function parseDate(value) {
-  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
-  const date = new Date(`${value}T00:00:00Z`);
-  return Number.isNaN(date.getTime()) ? null : date;
-}
+// ---------- API ----------
 
-function validateBooking(body) {
-  const errors = {};
-  const name = String(body.name || '').trim();
-  const email = String(body.email || '').trim();
-  const phone = String(body.phone || '').trim();
-  const notes = String(body.notes || '').trim().slice(0, 1000);
-  const apartment = apartments.find((a) => a.id === body.apartment);
-  const guests = Number.parseInt(body.guests, 10);
-  const checkIn = parseDate(body.checkIn);
-  const checkOut = parseDate(body.checkOut);
-
-  if (name.length < 2) errors.name = 'Please enter your full name.';
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Please enter a valid email address.';
-  if (phone && !/^[+\d][\d\s()-]{5,}$/.test(phone)) errors.phone = 'Please enter a valid phone number.';
-  if (!apartment) errors.apartment = 'Please choose an apartment.';
-
-  const today = new Date();
-  today.setUTCHours(0, 0, 0, 0);
-  if (!checkIn) errors.checkIn = 'Please choose a check-in date.';
-  else if (checkIn < today) errors.checkIn = 'Check-in cannot be in the past.';
-  if (!checkOut) errors.checkOut = 'Please choose a check-out date.';
-  else if (checkIn && checkOut <= checkIn) errors.checkOut = 'Check-out must be after check-in.';
-
-  if (!Number.isInteger(guests) || guests < 1) errors.guests = 'Please enter the number of guests.';
-  else if (apartment && guests > apartment.guests) {
-    errors.guests = `${apartment.name} sleeps up to ${apartment.guests} guests.`;
-  }
-
-  return { errors, booking: { name, email, phone, notes, apartment, guests, checkIn, checkOut } };
-}
-
-app.get('/api/apartments', (req, res) => {
-  res.json(apartments);
+app.use(publicRoutes.webhook); // raw body: must come before express.json()
+app.use(express.json({ limit: '50kb' }));
+app.use('/api', sameOriginOnly);
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/')) res.setHeader('Cache-Control', 'no-store');
+  next();
 });
+app.use(publicRoutes.router);
+app.use(publicRoutes.dev);
+app.use(guestRoutes);
+app.use(adminRoutes);
 
-// Booking requests are not stored anywhere: they are only emailed to the hotel.
-app.post('/api/bookings', async (req, res, next) => {
-  try {
-    const { errors, booking } = validateBooking(req.body || {});
-    if (Object.keys(errors).length) return res.status(400).json({ errors });
-
-    const { apartment, checkIn, checkOut } = booking;
-    const nights = Math.round((checkOut - checkIn) / 86400000);
-    const record = {
-      reference: `UA-${crypto.randomBytes(3).toString('hex').toUpperCase()}`,
-      apartmentId: apartment.id,
-      apartmentName: apartment.name,
-      checkIn: checkIn.toISOString().slice(0, 10),
-      checkOut: checkOut.toISOString().slice(0, 10),
-      nights,
-      guests: booking.guests,
-      total: nights * apartment.price,
-      name: booking.name,
-      email: booking.email,
-      phone: booking.phone,
-      notes: booking.notes,
-      createdAt: new Date().toISOString(),
-    };
-
-    // The email is the only copy of the request, so if it can't be sent the guest must be told.
-    // Logs never include the guest's details.
-    const unavailable = {
-      errors: {
-        form: `We couldn't send your request just now. Please try again in a few minutes or email us at ${BOOKING_EMAIL_TO}.`,
-      },
-    };
-    if (!isMailConfigured) {
-      console.error(`Booking request ${record.reference} not sent: SMTP is not configured (see .env.example).`);
-      return res.status(503).json(unavailable);
-    }
-    try {
-      await sendBookingNotification(record);
-    } catch (err) {
-      console.error(`Could not email booking request ${record.reference} to ${BOOKING_EMAIL_TO}:`, err.message);
-      return res.status(502).json(unavailable);
-    }
-
-    const { email, phone, notes, ...summary } = record;
-    res.status(201).json(summary);
-  } catch (err) {
-    next(err);
-  }
-});
-
+app.use('/api', (req, res) => res.status(404).json({ error: 'Not found.' }));
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(500).json({ errors: { form: 'Something went wrong on our side. Please try again or email us.' } });
+  const message = 'Something went wrong on our side. Please try again or email info@unleashathens.com.';
+  res.status(500).json({ error: message, errors: { form: message } });
 });
 
-app.listen(PORT, () => {
-  console.log(`Unleash Athens is open at http://localhost:${PORT}`);
-});
+// ---------- Start ----------
+
+async function start() {
+  await migrate();
+  await syncApartments();
+  const tick = (fn, label) => fn().catch((err) => console.error(`${label} failed:`, err.message));
+  tick(expireStaleHolds, 'Expiring holds');
+  tick(runRetention, 'Retention clean-up');
+  setInterval(() => tick(expireStaleHolds, 'Expiring holds'), 5 * 60e3).unref();
+  setInterval(() => tick(runRetention, 'Retention clean-up'), 24 * 3600e3).unref();
+  app.listen(config.port, () => console.log(`Unleash Athens is open at ${config.baseUrl} (database: ${config.db.client})`));
+}
+
+if (require.main === module) {
+  start().catch((err) => {
+    console.error('Failed to start:', err);
+    process.exit(1);
+  });
+}
+
+module.exports = { app, start };

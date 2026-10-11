@@ -443,3 +443,28 @@ figure { margin: 0; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* Map placeholder: Google's map only loads after the visitor clicks */
+.map-consent {
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+  background: var(--olive-pale);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.map-consent p { margin: 0; max-width: 30em; }
+.map-consent a { font-size: 0.82rem; }
+
+/* Booking form additions */
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 0.88rem; line-height: 1.5; margin-top: 6px; cursor: pointer; }
+.check input { width: 18px; height: 18px; margin: 2px 0 0; flex: none; accent-color: var(--terracotta); }
+.availability { margin: 0 0 8px; padding: 10px 14px; border-radius: 10px; font-size: 0.9rem; font-weight: 400; background: #f8e3dc; color: var(--terracotta-dark); }
+.availability.is-free { background: var(--olive-pale); color: var(--olive-dark); }
+.secure-note { margin: 4px 0 0; font-size: 0.78rem; color: var(--muted); text-align: center; }
+.footer-links { margin-top: 10px !important; }
