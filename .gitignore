@@ -1,3 +1,4 @@
 node_modules/
 data/bookings.json
 .DS_Store
+.env

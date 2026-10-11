@@ -1,7 +1,13 @@
+// Load SMTP and other settings from .env when present (not committed to git).
+try {
+  process.loadEnvFile();
+} catch {}
+
 const express = require('express');
 const fs = require('fs/promises');
 const path = require('path');
 const crypto = require('crypto');
+const { sendBookingNotification, BOOKING_EMAIL_TO } = require('./mailer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -134,7 +140,17 @@ app.post('/api/bookings', async (req, res, next) => {
     await writeBookings(existing);
     console.log(`New booking ${record.reference}: ${record.apartmentName}, ${record.checkIn} → ${record.checkOut}`);
 
-    const { email, phone, notes, ...summary } = record;
+    // The booking is already saved, so a mail failure is logged rather than shown to the guest.
+    try {
+      await sendBookingNotification(record);
+      record.emailed = Boolean(process.env.SMTP_HOST);
+    } catch (err) {
+      record.emailed = false;
+      console.error(`Could not email booking ${record.reference} to ${BOOKING_EMAIL_TO}:`, err.message);
+    }
+    await writeBookings(existing);
+
+    const { email, phone, notes, emailed, ...summary } = record;
     res.status(201).json(summary);
   } catch (err) {
     next(err);
