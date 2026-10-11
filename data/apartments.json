@@ -1,0 +1,116 @@
+[
+  {
+    "id": "lycabettus-loft",
+    "name": "Lycabettus Loft",
+    "floor": "4th floor",
+    "size": 58,
+    "guests": 2,
+    "beds": "1 king bed",
+    "price": 165,
+    "summary": "A top-floor loft with a private terrace looking straight at Lycabettus Hill.",
+    "description": "Exposed timber beams, a hand-plastered lime wall and floor-to-ceiling doors that open onto a 20 m² terrace. Mornings here start with coffee facing Lycabettus; evenings end with the city lights coming on below.",
+    "features": [
+      "Private terrace",
+      "Lycabettus view",
+      "Rain shower",
+      "Espresso machine",
+      "Air conditioning"
+    ],
+    "photoCaption": "Lycabettus from Kallidromiou Street"
+  },
+  {
+    "id": "strefi-suite",
+    "name": "Strefi Suite",
+    "floor": "3rd floor",
+    "size": 52,
+    "guests": 3,
+    "beds": "1 queen bed + 1 day bed",
+    "price": 145,
+    "summary": "Pine-green tones and a balcony that leans into the trees of Strefi Hill.",
+    "description": "Named after the hill it faces, this suite brings the green indoors: olive linen, oak floors and a deep balcony shaded by the pines across the street. A day bed in the reading nook sleeps a third guest.",
+    "features": [
+      "Hill-facing balcony",
+      "Reading nook",
+      "Walk-in shower",
+      "Full kitchenette",
+      "Smart TV"
+    ],
+    "photoCaption": "The steps up to Strefi Hill"
+  },
+  {
+    "id": "neapoli-studio",
+    "name": "Neapoli Studio",
+    "floor": "2nd floor",
+    "size": 34,
+    "guests": 2,
+    "beds": "1 queen bed",
+    "price": 105,
+    "summary": "A bright, compact studio for couples who plan to spend their days out exploring.",
+    "description": "Clever built-in joinery, the original mosaic tiles and a tall window over Koumarianou Street. Everything you need in a calm, well-planned space, with a small writing desk for slower mornings.",
+    "features": [
+      "Original mosaic floor",
+      "Writing desk",
+      "Kitchenette",
+      "Walk-in shower",
+      "Blackout curtains"
+    ],
+    "photoCaption": "Townhouses in Neapoli"
+  },
+  {
+    "id": "exarchia-family",
+    "name": "Exarchia Family Apartment",
+    "floor": "2nd floor",
+    "size": 78,
+    "guests": 5,
+    "beds": "2 bedrooms: 1 king, 2 singles + sofa bed",
+    "price": 210,
+    "summary": "Two bedrooms, a proper kitchen and a long dining table for families and friends.",
+    "description": "Our largest apartment, with two separate bedrooms, a full kitchen and a living room built around a 2.4 m oak dining table. A travel cot and high chair are available on request.",
+    "features": [
+      "2 bedrooms",
+      "Full kitchen",
+      "Washing machine",
+      "Dining for 6",
+      "Cot on request"
+    ],
+    "photoCaption": "Exarchia Square"
+  },
+  {
+    "id": "courtyard-garden",
+    "name": "Courtyard Garden Apartment",
+    "floor": "Ground floor",
+    "size": 46,
+    "guests": 2,
+    "beds": "1 king bed",
+    "price": 135,
+    "summary": "Opens onto the building's private courtyard with its old lemon tree and jasmine.",
+    "description": "Step-free access, a stone-floored bathroom and French doors onto the shared courtyard, where the lemon tree planted by the building's first owners still bears fruit every winter.",
+    "features": [
+      "Courtyard access",
+      "Step-free entry",
+      "Bathtub",
+      "Kitchenette",
+      "Garden seating"
+    ],
+    "photoCaption": "Iron balconies in Exarchia"
+  },
+  {
+    "id": "vecchia-classic",
+    "name": "Vecchia Classic",
+    "floor": "1st floor",
+    "size": 42,
+    "guests": 2,
+    "beds": "1 queen bed",
+    "price": 120,
+    "summary": "The apartment that keeps the most of the original neoclassical house: high ceilings and restored shutters.",
+    "description": "Restored wooden shutters, 3.6 m ceilings with original plaster mouldings and a vintage Greek armoire. A quiet, characterful room that feels like staying in an old Athenian home, because it is one.",
+    "features": [
+      "3.6 m ceilings",
+      "Restored shutters",
+      "Vintage furniture",
+      "Kitchenette",
+      "Air conditioning"
+    ],
+    "photoCaption": "A neoclassical house in Exarchia"
+  }
+]

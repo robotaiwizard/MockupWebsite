@@ -1,0 +1,18 @@
+{
+  "name": "casa-vecchia",
+  "version": "1.0.0",
+  "description": "Website for Casa Vecchia, a boutique hotel at Koumarianou 23 below Strefi Hill, Athens",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "express": "^4.22.3"
+  }
+}

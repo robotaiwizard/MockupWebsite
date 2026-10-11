@@ -1,0 +1,200 @@
+{
+  "hero": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/The_Hill_of_Strefi_from_Mount_Lycabettus_on_November_30%2C_2019.jpg/1920px-The_Hill_of_Strefi_from_Mount_Lycabettus_on_November_30%2C_2019.jpg",
+    "alt": "Strefi Hill, a green island among the rooftops of Neapoli and Exarchia, seen from Lycabettus",
+    "title": "The Hill of Strefi from Mount Lycabettus on November 30, 2019.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:The_Hill_of_Strefi_from_Mount_Lycabettus_on_November_30,_2019.jpg",
+    "author": "George E. Koronaios",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "intro": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/%CE%9D%CE%B5%CE%BF%CE%BA%CE%BB%CE%B1%CF%83%CE%B9%CE%BA%CF%8C_%CE%A0%CE%B5%CE%BB%CE%BF%CF%80%CE%AF%CE%B4%CE%B1_%CE%BA%CE%B1%CE%B9_%CE%91%CE%B9%CF%8C%CE%BB%CE%BF%CF%85_6183.jpg/960px-%CE%9D%CE%B5%CE%BF%CE%BA%CE%BB%CE%B1%CF%83%CE%B9%CE%BA%CF%8C_%CE%A0%CE%B5%CE%BB%CE%BF%CF%80%CE%AF%CE%B4%CE%B1_%CE%BA%CE%B1%CE%B9_%CE%91%CE%B9%CF%8C%CE%BB%CE%BF%CF%85_6183.jpg",
+    "alt": "A restored neoclassical townhouse with wrought-iron balconies in central Athens",
+    "title": "Νεοκλασικό Πελοπίδα και Αιόλου 6183.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%CE%9D%CE%B5%CE%BF%CE%BA%CE%BB%CE%B1%CF%83%CE%B9%CE%BA%CF%8C_%CE%A0%CE%B5%CE%BB%CE%BF%CF%80%CE%AF%CE%B4%CE%B1_%CE%BA%CE%B1%CE%B9_%CE%91%CE%B9%CF%8C%CE%BB%CE%BF%CF%85_6183.jpg",
+    "author": "C messier",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "strefi-aerial": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Strefi_hill_from_Lycabettus_Athens_Greece.jpg/960px-Strefi_hill_from_Lycabettus_Athens_Greece.jpg",
+    "alt": "Strefi Hill's pine woods surrounded by the city",
+    "title": "Strefi hill from Lycabettus Athens Greece.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Strefi_hill_from_Lycabettus_Athens_Greece.jpg",
+    "author": "Jebulon",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  },
+  "strefi-stairs": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Stairs_in_Athens.jpg/960px-Stairs_in_Athens.jpg",
+    "alt": "Stone steps climbing through the trees towards Strefi Hill",
+    "title": "Stairs in Athens.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Stairs_in_Athens.jpg",
+    "author": "Yair-haklai",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "strefi-top": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Strefi.JPG/960px-Strefi.JPG",
+    "alt": "Rocks, pines and cypresses near the top of Strefi Hill",
+    "title": "Strefi.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Strefi.JPG",
+    "author": "de:Benutzer:Albtalkourtaki",
+    "license": "Copyrighted free use",
+    "licenseUrl": null
+  },
+  "strefi-view": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/%CE%91%CE%B8%CE%AE%CE%BD%CE%B1._%CE%A0%CE%B1%CE%BD%CE%BF%CF%81%CE%B1%CE%BC%CE%B9%CE%BA%CE%AE_%CE%B8%CE%AD%CE%B1_%CE%B1%CF%80%CF%8C_%CF%84%CE%BF_%CE%BB%CF%8C%CF%86%CE%BF_%CF%84%CE%BF%CF%85_%CE%A3%CF%84%CF%81%CE%AD%CF%86%CE%B7.jpg/1920px-%CE%91%CE%B8%CE%AE%CE%BD%CE%B1._%CE%A0%CE%B1%CE%BD%CE%BF%CF%81%CE%B1%CE%BC%CE%B9%CE%BA%CE%AE_%CE%B8%CE%AD%CE%B1_%CE%B1%CF%80%CF%8C_%CF%84%CE%BF_%CE%BB%CF%8C%CF%86%CE%BF_%CF%84%CE%BF%CF%85_%CE%A3%CF%84%CF%81%CE%AD%CF%86%CE%B7.jpg",
+    "alt": "Panoramic view over Athens from the rocks of Strefi Hill",
+    "title": "Αθήνα. Πανοραμική θέα από το λόφο του Στρέφη.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%CE%91%CE%B8%CE%AE%CE%BD%CE%B1._%CE%A0%CE%B1%CE%BD%CE%BF%CF%81%CE%B1%CE%BC%CE%B9%CE%BA%CE%AE_%CE%B8%CE%AD%CE%B1_%CE%B1%CF%80%CF%8C_%CF%84%CE%BF_%CE%BB%CF%8C%CF%86%CE%BF_%CF%84%CE%BF%CF%85_%CE%A3%CF%84%CF%81%CE%AD%CF%86%CE%B7.jpg",
+    "author": "Enrique Íñiguez Rodríguez (Qoan)",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  "apt-lycabettus-loft": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/View_of_Lycabettus_from_Kallidromiou_street.jpg/960px-View_of_Lycabettus_from_Kallidromiou_street.jpg",
+    "alt": "Lycabettus rising above Kallidromiou Street, around the corner from Casa Vecchia",
+    "title": "View of Lycabettus from Kallidromiou street.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:View_of_Lycabettus_from_Kallidromiou_street.jpg",
+    "author": "Yair-haklai",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "apt-strefi-suite": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Stairs_in_Athens.jpg/960px-Stairs_in_Athens.jpg",
+    "alt": "Steps up to Strefi Hill",
+    "title": "Stairs in Athens.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Stairs_in_Athens.jpg",
+    "author": "Yair-haklai",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "apt-neapoli-studio": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/20211104_athenes270.jpg/960px-20211104_athenes270.jpg",
+    "alt": "A street of old townhouses in Neapoli",
+    "title": "20211104 athenes270.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:20211104_athenes270.jpg",
+    "author": "Jean Housen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "apt-exarchia-family": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Exarchia_square_Athens.jpg/960px-Exarchia_square_Athens.jpg",
+    "alt": "Exarchia Square under its trees",
+    "title": "Exarchia square Athens.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Exarchia_square_Athens.jpg",
+    "author": "Badseed",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+  },
+  "apt-courtyard-garden": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/20211104_athenes049.jpg/960px-20211104_athenes049.jpg",
+    "alt": "Neoclassical facade with iron balconies in Exarchia",
+    "title": "20211104 athenes049.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:20211104_athenes049.jpg",
+    "author": "Jean Housen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "apt-vecchia-classic": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/2/20/Eksarxeia-2.jpg",
+    "alt": "Yellow neoclassical house with shutters in Exarchia",
+    "title": "Eksarxeia-2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Eksarxeia-2.jpg",
+    "author": "Dimorsitanos",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  "acropolis": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg/960px-Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg",
+    "alt": "The Acropolis seen from Philopappos Hill",
+    "title": "Attica 06-13 Athens 50 View from Philopappos - Acropolis Hill.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg",
+    "author": "A.Savin",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  "nam": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/%CE%A0%CF%81%CF%8C%CF%83%CE%BF%CF%88%CE%B7_%CE%B1%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%BF%CF%8D_%CE%BC%CE%BF%CF%85%CF%83%CE%B5%CE%AF%CE%BF%CF%85_%CE%91%CE%B8%CE%B7%CE%BD%CF%8E%CE%BD_8616.jpg/960px-%CE%A0%CF%81%CF%8C%CF%83%CE%BF%CF%88%CE%B7_%CE%B1%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%BF%CF%8D_%CE%BC%CE%BF%CF%85%CF%83%CE%B5%CE%AF%CE%BF%CF%85_%CE%91%CE%B8%CE%B7%CE%BD%CF%8E%CE%BD_8616.jpg",
+    "alt": "The neoclassical facade of the National Archaeological Museum",
+    "title": "Πρόσοψη αρχαιολογικού μουσείου Αθηνών 8616.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%CE%A0%CF%81%CF%8C%CF%83%CE%BF%CF%88%CE%B7_%CE%B1%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%BF%CF%8D_%CE%BC%CE%BF%CF%85%CF%83%CE%B5%CE%AF%CE%BF%CF%85_%CE%91%CE%B8%CE%B7%CE%BD%CF%8E%CE%BD_8616.jpg",
+    "author": "C messier",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "acropolis-museum": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Athens_Acropolis_Museum_Excavation-3.jpg/960px-Athens_Acropolis_Museum_Excavation-3.jpg",
+    "alt": "The excavated ancient neighbourhood beneath the Acropolis Museum",
+    "title": "Athens Acropolis Museum Excavation-3.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Athens_Acropolis_Museum_Excavation-3.jpg",
+    "author": "Yair-haklai",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "lycabettus": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Acropolis_at_sunset_from_Mount_Lycabettus_on_December_21%2C_2019.jpg/960px-The_Acropolis_at_sunset_from_Mount_Lycabettus_on_December_21%2C_2019.jpg",
+    "alt": "Sunset over Athens from the top of Lycabettus",
+    "title": "The Acropolis at sunset from Mount Lycabettus on December 21, 2019.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:The_Acropolis_at_sunset_from_Mount_Lycabettus_on_December_21,_2019.jpg",
+    "author": "George E. Koronaios",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "anafiotika": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Athens%2C_Anafiotika%2C_225857.jpg/960px-Athens%2C_Anafiotika%2C_225857.jpg",
+    "alt": "Bougainvillea and whitewashed walls in Anafiotika",
+    "title": "Athens, Anafiotika, 225857.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Athens,_Anafiotika,_225857.jpg",
+    "author": "Zde",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "market": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Central_Market_of_Athens.jpg/960px-Central_Market_of_Athens.jpg",
+    "alt": "Inside the Varvakios Central Market",
+    "title": "Central Market of Athens.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Central_Market_of_Athens.jpg",
+    "author": "athenswalk",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  },
+  "monastiraki": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Monastiraki_Square_on_September_19%2C_2019.jpg/960px-Monastiraki_Square_on_September_19%2C_2019.jpg",
+    "alt": "Monastiraki Square with the Acropolis behind",
+    "title": "Monastiraki Square on September 19, 2019.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Monastiraki_Square_on_September_19,_2019.jpg",
+    "author": "George E. Koronaios",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "agora": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Temple_of_Hephaestus_from_ancient_agora_Athens.jpg/960px-Temple_of_Hephaestus_from_ancient_agora_Athens.jpg",
+    "alt": "The Temple of Hephaestus above the Ancient Agora",
+    "title": "Temple of Hephaestus from ancient agora Athens.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Temple_of_Hephaestus_from_ancient_agora_Athens.jpg",
+    "author": "Jebulon",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  },
+  "syntagma": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Members_of_the_Greek_Presidential_Guard_%28Evzones%29_at_the_Tomb_of_the_Unknown_Soldier.jpg/960px-Members_of_the_Greek_Presidential_Guard_%28Evzones%29_at_the_Tomb_of_the_Unknown_Soldier.jpg",
+    "alt": "Evzones guarding the Tomb of the Unknown Soldier at Syntagma",
+    "title": "Members of the Greek Presidential Guard (Evzones) at the Tomb of the Unknown Soldier.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Members_of_the_Greek_Presidential_Guard_(Evzones)_at_the_Tomb_of_the_Unknown_Soldier.jpg",
+    "author": "George E. Koronaios",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "kallidromiou": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/85_Kallidromiou.jpg/960px-85_Kallidromiou.jpg",
+    "alt": "Apartment buildings on Kallidromiou Street, Exarchia",
+    "title": "85 Kallidromiou.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:85_Kallidromiou.jpg",
+    "author": "Yair-haklai",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  }
+}
