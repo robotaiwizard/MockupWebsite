@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-const BOOKING_EMAIL_TO = process.env.BOOKING_EMAIL_TO || 'stay@unleashathens.com';
+const BOOKING_EMAIL_TO = process.env.BOOKING_EMAIL_TO || 'info@unleashathens.com';
 
 // With SMTP settings we send real email. Without them (local development) the
 // message is printed to the console instead, so the booking flow still works.
