@@ -10,6 +10,14 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Respect reduced-motion: show the house video's first frame instead of playing it.
+  const introVideo = document.querySelector('.intro-video');
+  if (introVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    introVideo.removeAttribute('autoplay');
+    introVideo.pause();
+    introVideo.controls = true;
+  }
+
   // Mobile navigation
   const toggle = document.querySelector('.nav-toggle');
   const links = document.getElementById('nav-links');

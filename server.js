@@ -15,7 +15,7 @@ const escapeHtml = (s) =>
 // Fill <img data-photo="key"> slots and the credits list from data/photos.json, once at startup.
 function renderIndex() {
   const html = require('fs').readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
-  const credits = [...new Map(Object.values(photos).map((p) => [p.page, p])).values()]
+  const credits = [...new Map(Object.values(photos).filter((p) => p.page).map((p) => [p.page, p])).values()]
     .map(
       (p) =>
         `<li><a href="${escapeHtml(p.page)}" target="_blank" rel="noopener">${escapeHtml(p.title)}</a> by ${escapeHtml(p.author)}, ` +

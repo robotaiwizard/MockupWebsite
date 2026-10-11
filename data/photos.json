@@ -8,15 +8,6 @@
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
-  "intro": {
-    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/%CE%9D%CE%B5%CE%BF%CE%BA%CE%BB%CE%B1%CF%83%CE%B9%CE%BA%CF%8C_%CE%A0%CE%B5%CE%BB%CE%BF%CF%80%CE%AF%CE%B4%CE%B1_%CE%BA%CE%B1%CE%B9_%CE%91%CE%B9%CF%8C%CE%BB%CE%BF%CF%85_6183.jpg/960px-%CE%9D%CE%B5%CE%BF%CE%BA%CE%BB%CE%B1%CF%83%CE%B9%CE%BA%CF%8C_%CE%A0%CE%B5%CE%BB%CE%BF%CF%80%CE%AF%CE%B4%CE%B1_%CE%BA%CE%B1%CE%B9_%CE%91%CE%B9%CF%8C%CE%BB%CE%BF%CF%85_6183.jpg",
-    "alt": "A restored neoclassical townhouse with wrought-iron balconies in central Athens",
-    "title": "Νεοκλασικό Πελοπίδα και Αιόλου 6183.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:%CE%9D%CE%B5%CE%BF%CE%BA%CE%BB%CE%B1%CF%83%CE%B9%CE%BA%CF%8C_%CE%A0%CE%B5%CE%BB%CE%BF%CF%80%CE%AF%CE%B4%CE%B1_%CE%BA%CE%B1%CE%B9_%CE%91%CE%B9%CF%8C%CE%BB%CE%BF%CF%85_6183.jpg",
-    "author": "C messier",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-  },
   "strefi-aerial": {
     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Strefi_hill_from_Lycabettus_Athens_Greece.jpg/960px-Strefi_hill_from_Lycabettus_Athens_Greece.jpg",
     "alt": "Strefi Hill's pine woods surrounded by the city",
@@ -54,58 +45,58 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   "apt-lycabettus-loft": {
-    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/View_of_Lycabettus_from_Kallidromiou_street.jpg/960px-View_of_Lycabettus_from_Kallidromiou_street.jpg",
-    "alt": "Lycabettus rising above Kallidromiou Street, around the corner from Unleash Athens",
-    "title": "View of Lycabettus from Kallidromiou street.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:View_of_Lycabettus_from_Kallidromiou_street.jpg",
-    "author": "Yair-haklai",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "src": "/images/apt-lycabettus-loft.webp",
+    "alt": "The new rooftop pergola terrace above the ochre facade",
+    "title": null,
+    "page": null,
+    "author": "Unleash Athens",
+    "license": null,
+    "licenseUrl": null
   },
   "apt-strefi-suite": {
-    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Stairs_in_Athens.jpg/960px-Stairs_in_Athens.jpg",
-    "alt": "Steps up to Strefi Hill",
-    "title": "Stairs in Athens.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Stairs_in_Athens.jpg",
-    "author": "Yair-haklai",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "src": "/images/apt-strefi-suite.webp",
+    "alt": "An upper-floor balcony with tall grey shutters",
+    "title": null,
+    "page": null,
+    "author": "Unleash Athens",
+    "license": null,
+    "licenseUrl": null
   },
   "apt-neapoli-studio": {
-    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/20211104_athenes270.jpg/960px-20211104_athenes270.jpg",
-    "alt": "A street of old townhouses in Neapoli",
-    "title": "20211104 athenes270.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:20211104_athenes270.jpg",
-    "author": "Jean Housen",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "src": "/images/apt-neapoli-studio.webp",
+    "alt": "The garden-level entrance with potted olive trees and lavender",
+    "title": null,
+    "page": null,
+    "author": "Unleash Athens",
+    "license": null,
+    "licenseUrl": null
   },
   "apt-exarchia-family": {
-    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Exarchia_square_Athens.jpg/960px-Exarchia_square_Athens.jpg",
-    "alt": "Exarchia Square under its trees",
-    "title": "Exarchia square Athens.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Exarchia_square_Athens.jpg",
-    "author": "Badseed",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+    "src": "/images/apt-exarchia-family.webp",
+    "alt": "The central stair rising between the two wings of the house",
+    "title": null,
+    "page": null,
+    "author": "Unleash Athens",
+    "license": null,
+    "licenseUrl": null
   },
   "apt-courtyard-garden": {
-    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/20211104_athenes049.jpg/960px-20211104_athenes049.jpg",
-    "alt": "Neoclassical facade with iron balconies in Exarchia",
-    "title": "20211104 athenes049.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:20211104_athenes049.jpg",
-    "author": "Jean Housen",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "src": "/images/apt-courtyard-garden.webp",
+    "alt": "Stone garden steps planted with lavender beside the house",
+    "title": null,
+    "page": null,
+    "author": "Unleash Athens",
+    "license": null,
+    "licenseUrl": null
   },
   "apt-neoclassical": {
-    "src": "https://upload.wikimedia.org/wikipedia/commons/2/20/Eksarxeia-2.jpg",
-    "alt": "Yellow neoclassical house with shutters in Exarchia",
-    "title": "Eksarxeia-2.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Eksarxeia-2.jpg",
-    "author": "Dimorsitanos",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "src": "/images/apt-neoclassical.webp",
+    "alt": "Tall shuttered windows of the original neoclassical house",
+    "title": null,
+    "page": null,
+    "author": "Unleash Athens",
+    "license": null,
+    "licenseUrl": null
   },
   "acropolis": {
     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg/960px-Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg",
