@@ -1,6 +1,6 @@
-# Casa Vecchia
+# Unleash Athens
 
-Website for Casa Vecchia, a boutique hotel of six apartments at Koumarianou 23, below Strefi Hill in Athens.
+Website for Unleash Athens, a boutique hotel of six apartments at Koumarianou 23, below Strefi Hill in Athens.
 
 ## Run
 

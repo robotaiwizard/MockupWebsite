@@ -50,6 +50,10 @@
             </div>
             <p class="apartment-summary">${escapeHtml(a.summary)}</p>
             <p class="apartment-description">${escapeHtml(a.description)}</p>
+            <dl class="old-new">
+              <div><dt>Kept</dt><dd>${escapeHtml(a.original)}</dd></div>
+              <div><dt>Added</dt><dd>${escapeHtml(a.new)}</dd></div>
+            </dl>
             <ul class="features">${a.features.map((f) => `<li>${escapeHtml(f)}</li>`).join('')}</ul>
             <div class="apartment-footer">
               <span class="price">${euro(a.price)} <small>/ night</small></span>

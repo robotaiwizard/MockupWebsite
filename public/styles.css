@@ -181,6 +181,28 @@ figure { margin: 0; }
   background: linear-gradient(transparent, rgba(38, 43, 26, 0.7));
 }
 .intro-grid p { color: var(--muted); }
+/* The shell vs the interiors */
+.shell-interior { display: grid; grid-template-columns: 1fr 1fr; margin-top: 80px; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+.shell-interior > div { padding: clamp(28px, 4vw, 48px); }
+.shell-interior h3 { font-size: 2rem; }
+.shell-interior ul { list-style: none; margin: 0; padding: 0; }
+.shell-interior li { padding: 10px 0; border-bottom: 1px solid; }
+.shell-interior li:last-child { border-bottom: 0; }
+.shell { background: var(--cream); border-right: 4px solid var(--terracotta); }
+.shell li { font-family: var(--serif); font-size: 1.2rem; font-style: italic; border-color: var(--line); }
+.interior { background: var(--olive-deep); color: var(--cream); }
+.interior .eyebrow { color: #c6cc9c; }
+.interior h3 { font-family: var(--sans); font-weight: 400; letter-spacing: 0.01em; }
+.interior li { font-size: 0.98rem; letter-spacing: 0.02em; border-color: rgba(243, 239, 226, 0.14); }
+
+.old-new { display: grid; grid-template-columns: 1fr 1fr; margin: 0 0 18px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.old-new > div { padding: 10px 12px; }
+.old-new > div + div { background: var(--olive-pale); }
+.old-new dt { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); }
+.old-new > div + div dt { color: var(--olive-dark); }
+.old-new dd { margin: 2px 0 0; font-size: 0.86rem; line-height: 1.4; }
+.old-new > div:first-child dd { font-family: var(--serif); font-style: italic; font-size: 1rem; }
+
 .perks {
   list-style: none;
   padding: 36px 0 0;
@@ -402,6 +424,8 @@ figure { margin: 0; }
 
   .apartment-grid { grid-template-columns: 1fr; }
   .strefi-gallery { grid-template-columns: 1fr 1fr; }
+  .shell-interior { grid-template-columns: 1fr; }
+  .shell { border-right: 0; border-bottom: 4px solid var(--terracotta); }
   .strefi-gallery figure:last-child { grid-column: 1 / -1; }
   .strefi-panorama img { height: 180px; }
   .credits ul { columns: 1; }

@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "casa-vecchia",
+      "name": "unleash-athens",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["start"],
       "port": 3000

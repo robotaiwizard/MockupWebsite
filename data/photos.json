@@ -55,7 +55,7 @@
   },
   "apt-lycabettus-loft": {
     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/View_of_Lycabettus_from_Kallidromiou_street.jpg/960px-View_of_Lycabettus_from_Kallidromiou_street.jpg",
-    "alt": "Lycabettus rising above Kallidromiou Street, around the corner from Casa Vecchia",
+    "alt": "Lycabettus rising above Kallidromiou Street, around the corner from Unleash Athens",
     "title": "View of Lycabettus from Kallidromiou street.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:View_of_Lycabettus_from_Kallidromiou_street.jpg",
     "author": "Yair-haklai",
@@ -98,7 +98,7 @@
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
-  "apt-vecchia-classic": {
+  "apt-neoclassical": {
     "src": "https://upload.wikimedia.org/wikipedia/commons/2/20/Eksarxeia-2.jpg",
     "alt": "Yellow neoclassical house with shutters in Exarchia",
     "title": "Eksarxeia-2.jpg",

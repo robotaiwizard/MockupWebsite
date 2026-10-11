@@ -1,7 +1,7 @@
 {
-  "name": "casa-vecchia",
+  "name": "unleash-athens",
   "version": "1.0.0",
-  "description": "Website for Casa Vecchia, a boutique hotel at Koumarianou 23 below Strefi Hill, Athens",
+  "description": "Website for Unleash Athens, a boutique hotel at Koumarianou 23 below Strefi Hill, Athens",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

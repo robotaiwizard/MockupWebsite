@@ -115,7 +115,7 @@ app.post('/api/bookings', async (req, res, next) => {
 
     const nights = Math.round((checkOut - checkIn) / 86400000);
     const record = {
-      reference: `CV-${crypto.randomBytes(3).toString('hex').toUpperCase()}`,
+      reference: `UA-${crypto.randomBytes(3).toString('hex').toUpperCase()}`,
       apartmentId: apartment.id,
       apartmentName: apartment.name,
       checkIn: checkIn.toISOString().slice(0, 10),
@@ -147,5 +147,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Casa Vecchia is open at http://localhost:${PORT}`);
+  console.log(`Unleash Athens is open at http://localhost:${PORT}`);
 });
