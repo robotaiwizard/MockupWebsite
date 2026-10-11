@@ -173,8 +173,9 @@ figure { margin: 0; }
 /* Intro */
 .intro { padding: 96px 0 40px; }
 .intro-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
-.intro-photo { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 16 / 9; background: var(--olive-pale); }
-.intro-photo img, .intro-photo video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* The video sets the container size, so the box always wraps the video exactly. */
+.intro-photo { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.intro-photo img, .intro-photo video { width: 100%; height: auto; display: block; }
 /* In full-screen mode show the whole frame, letterboxed, rather than cropping it to the screen. */
 .intro-photo video:fullscreen { object-fit: contain; background: #000; }
 .intro-photo video:-webkit-full-screen { object-fit: contain; background: #000; }
