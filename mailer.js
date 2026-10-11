@@ -2,16 +2,16 @@ const nodemailer = require('nodemailer');
 
 const BOOKING_EMAIL_TO = process.env.BOOKING_EMAIL_TO || 'info@unleashathens.com';
 
-// With SMTP settings we send real email. Without them (local development) the
-// message is printed to the console instead, so the booking flow still works.
-const transport = process.env.SMTP_HOST
+const isMailConfigured = Boolean(process.env.SMTP_HOST);
+
+const transport = isMailConfigured
   ? nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 587,
       secure: process.env.SMTP_SECURE === 'true',
       auth: process.env.SMTP_USER ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } : undefined,
     })
-  : nodemailer.createTransport({ jsonTransport: true });
+  : null;
 
 // Default sender: the SMTP login when it is an email address, otherwise a no-reply address.
 const SENDER = /@/.test(process.env.SMTP_USER || '') ? process.env.SMTP_USER : 'no-reply@unleashathens.com';
@@ -59,11 +59,8 @@ async function sendBookingNotification(booking) {
       `</table><p style="font-family:Arial,sans-serif;font-size:13px;color:#64655a">Reply to this email to answer the guest directly.</p>`,
   };
 
-  const info = await transport.sendMail(message);
-  if (!process.env.SMTP_HOST) {
-    console.log(`[mail] SMTP not configured; booking email to ${BOOKING_EMAIL_TO} not sent:\n${message.text}`);
-  }
-  return info;
+  if (!transport) throw new Error('SMTP is not configured');
+  return transport.sendMail(message);
 }
 
-module.exports = { sendBookingNotification, BOOKING_EMAIL_TO };
+module.exports = { sendBookingNotification, isMailConfigured, BOOKING_EMAIL_TO };

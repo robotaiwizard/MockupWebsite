@@ -191,7 +191,7 @@
       }
       const fmt = (iso) => new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
       document.getElementById('confirmation-text').innerHTML =
-        `Your request for the <strong>${escapeHtml(data.apartmentName)}</strong> from ` +
+        `Your request for ${/^the /i.test(data.apartmentName) ? '' : 'the '}<strong>${escapeHtml(data.apartmentName)}</strong> from ` +
         `<strong>${fmt(data.checkIn)}</strong> to <strong>${fmt(data.checkOut)}</strong> ` +
         `(${data.nights} night${data.nights > 1 ? 's' : ''}, ${euro(data.total)}) has been received. ` +
         `Your reference is <strong>${escapeHtml(data.reference)}</strong>. We'll email you shortly to confirm.`;

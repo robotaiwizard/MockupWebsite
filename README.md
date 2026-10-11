@@ -17,10 +17,9 @@ npm start          # http://localhost:3000  (npm run dev restarts on file change
 | `mailer.js` | Emails each booking request to the hotel (`BOOKING_EMAIL_TO`, default info@unleashathens.com) |
 | `data/apartments.json` | The six apartments (name, size, guests, price, features). Edit here; the page and booking form update automatically |
 | `data/photos.json` | Every photo on the site: Wikimedia Commons URL, alt text, author and licence. The server fills `<img data-photo="key">` slots in `index.html` and the footer photo credits from this file |
-| `data/bookings.json` | Booking requests, created on the first booking (git-ignored) |
 | `public/` | The single-page site: `index.html`, `styles.css`, `app.js` |
 
-Booking requests are validated on the server (required fields, dates not in the past, guest limit per apartment) and rejected if they overlap an existing booking for the same apartment. No payment is taken; the guest gets a reference number and the request is saved to `data/bookings.json`.
+Booking requests are validated on the server (required fields, dates not in the past, guest limit per apartment) and emailed to the hotel. They are not stored anywhere. No payment is taken; the guest gets a reference number.
 
 ## Photos
 
@@ -32,4 +31,4 @@ Every booking request is emailed to **info@unleashathens.com** with all the form
 
 To turn sending on, copy `.env.example` to `.env` and fill in the SMTP settings from your email provider (host, port, username, password). `.env` is git-ignored, so the password never ends up in the repository. On a hosting platform, set the same names as environment variables instead.
 
-Without SMTP settings (e.g. local development) nothing is sent; the email is printed in the server log instead. Bookings are always saved to `data/bookings.json` first, so a mail outage never loses a request; each saved booking records `"emailed": true/false`.
+Requests are **not stored** on the server: the email is the only copy, and logs never contain guests' details. If the email can't be sent (SMTP not configured, wrong password, mail server down), the guest sees an error asking them to try again or email info@unleashathens.com, so no request is silently lost. To test locally, put SMTP settings in `.env`.

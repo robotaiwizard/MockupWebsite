@@ -4,14 +4,12 @@ try {
 } catch {}
 
 const express = require('express');
-const fs = require('fs/promises');
 const path = require('path');
 const crypto = require('crypto');
-const { sendBookingNotification, BOOKING_EMAIL_TO } = require('./mailer');
+const { sendBookingNotification, isMailConfigured, BOOKING_EMAIL_TO } = require('./mailer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const BOOKINGS_FILE = path.join(__dirname, 'data', 'bookings.json');
 const photos = require('./data/photos.json');
 const apartments = require('./data/apartments.json').map((a) => ({ ...a, photo: photos[`apt-${a.id}`] }));
 
@@ -44,19 +42,6 @@ const indexHtml = renderIndex();
 app.use(express.json({ limit: '20kb' }));
 app.get(['/', '/index.html'], (req, res) => res.type('html').send(indexHtml));
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
-
-async function readBookings() {
-  try {
-    return JSON.parse(await fs.readFile(BOOKINGS_FILE, 'utf8'));
-  } catch (err) {
-    if (err.code === 'ENOENT') return [];
-    throw err;
-  }
-}
-
-async function writeBookings(bookings) {
-  await fs.writeFile(BOOKINGS_FILE, JSON.stringify(bookings, null, 2));
-}
 
 // Parse a YYYY-MM-DD string as a UTC date so night counts are unaffected by DST.
 function parseDate(value) {
@@ -100,25 +85,13 @@ app.get('/api/apartments', (req, res) => {
   res.json(apartments);
 });
 
+// Booking requests are not stored anywhere: they are only emailed to the hotel.
 app.post('/api/bookings', async (req, res, next) => {
   try {
     const { errors, booking } = validateBooking(req.body || {});
     if (Object.keys(errors).length) return res.status(400).json({ errors });
 
     const { apartment, checkIn, checkOut } = booking;
-    const existing = await readBookings();
-    const overlaps = existing.some(
-      (b) =>
-        b.apartmentId === apartment.id &&
-        new Date(`${b.checkIn}T00:00:00Z`) < checkOut &&
-        new Date(`${b.checkOut}T00:00:00Z`) > checkIn
-    );
-    if (overlaps) {
-      return res.status(409).json({
-        errors: { checkIn: `${apartment.name} is already booked for some of those nights. Please try other dates or another apartment.` },
-      });
-    }
-
     const nights = Math.round((checkOut - checkIn) / 86400000);
     const record = {
       reference: `UA-${crypto.randomBytes(3).toString('hex').toUpperCase()}`,
@@ -136,21 +109,25 @@ app.post('/api/bookings', async (req, res, next) => {
       createdAt: new Date().toISOString(),
     };
 
-    existing.push(record);
-    await writeBookings(existing);
-    console.log(`New booking ${record.reference}: ${record.apartmentName}, ${record.checkIn} → ${record.checkOut}`);
-
-    // The booking is already saved, so a mail failure is logged rather than shown to the guest.
+    // The email is the only copy of the request, so if it can't be sent the guest must be told.
+    // Logs never include the guest's details.
+    const unavailable = {
+      errors: {
+        form: `We couldn't send your request just now. Please try again in a few minutes or email us at ${BOOKING_EMAIL_TO}.`,
+      },
+    };
+    if (!isMailConfigured) {
+      console.error(`Booking request ${record.reference} not sent: SMTP is not configured (see .env.example).`);
+      return res.status(503).json(unavailable);
+    }
     try {
       await sendBookingNotification(record);
-      record.emailed = Boolean(process.env.SMTP_HOST);
     } catch (err) {
-      record.emailed = false;
-      console.error(`Could not email booking ${record.reference} to ${BOOKING_EMAIL_TO}:`, err.message);
+      console.error(`Could not email booking request ${record.reference} to ${BOOKING_EMAIL_TO}:`, err.message);
+      return res.status(502).json(unavailable);
     }
-    await writeBookings(existing);
 
-    const { email, phone, notes, emailed, ...summary } = record;
+    const { email, phone, notes, ...summary } = record;
     res.status(201).json(summary);
   } catch (err) {
     next(err);
