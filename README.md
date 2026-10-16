@@ -25,6 +25,8 @@ Locally, with no other settings, the app uses a SQLite file (`data/dev.sqlite3`)
 
 The database tables are created and updated automatically on start (`migrations/`).
 
+**The website never goes down because of the booking system.** If the database can't be reached or booking settings are missing, pages still load and booking shows a "please email us" message; the database connection is retried every minute. Open **`/healthz`** on the live site to see what's connected and which settings are still missing (names only, never values). Use Node.js 20 or newer in hPanel.
+
 ## How booking works
 
 1. The guest picks dates; the form shows availability and the price.

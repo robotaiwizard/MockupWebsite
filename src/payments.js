@@ -7,7 +7,6 @@ const stripe = config.stripe.secretKey ? require('stripe')(config.stripe.secretK
 const isStripe = Boolean(stripe);
 const useTestCheckout = !stripe && config.devMode;
 
-if (!stripe && config.isProduction) throw new Error('STRIPE_SECRET_KEY is required in production');
 if (!stripe && !useTestCheckout) console.warn('Payments are not configured: set STRIPE_SECRET_KEY (or DEV_MODE=true for local testing). Online booking is disabled.');
 
 /**

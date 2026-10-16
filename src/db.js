@@ -19,8 +19,15 @@ function connection() {
       pool: { min: 0, max: 10 },
     };
   }
+  try {
+    require.resolve('better-sqlite3');
+  } catch {
+    throw new Error('The SQLite driver (better-sqlite3) is not installed. On a server, use MySQL: set DB_CLIENT=mysql and the DB_* settings.');
+  }
   const file = path.resolve(__dirname, '..', config.db.sqliteFile);
-  fs.mkdirSync(path.dirname(file), { recursive: true });
+  try {
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+  } catch {} // reported when the first query fails, without stopping the website
   return {
     client: 'better-sqlite3',
     connection: { filename: file },
@@ -29,9 +36,19 @@ function connection() {
   };
 }
 
-const db = knex({
-  ...connection(),
-  migrations: { directory: path.join(__dirname, '..', 'migrations') },
+// The connection is created on first use, so a missing driver or bad settings surface as an
+// error the server can catch (the website keeps running) instead of crashing at startup.
+let instance;
+function getDb() {
+  instance ||= knex({ ...connection(), migrations: { directory: path.join(__dirname, '..', 'migrations') } });
+  return instance;
+}
+const db = new Proxy(function () {}, {
+  apply: (_target, _this, args) => getDb()(...args),
+  get: (_target, prop) => {
+    const value = getDb()[prop];
+    return typeof value === 'function' ? value.bind(getDb()) : value;
+  },
 });
 
 // Timestamps are stored as UTC 'YYYY-MM-DD HH:MM:SS' strings in both databases.

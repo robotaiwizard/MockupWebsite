@@ -16,7 +16,7 @@ const config = {
   baseUrl: (env.BASE_URL || `http://localhost:${int(env.PORT, 3000)}`).replace(/\/$/, ''),
 
   db: {
-    client: env.DB_CLIENT || (isProduction ? 'mysql' : 'sqlite'),
+    client: env.DB_CLIENT || (isProduction || env.DB_HOST ? 'mysql' : 'sqlite'),
     host: env.DB_HOST || '127.0.0.1',
     port: int(env.DB_PORT, 3306),
     user: env.DB_USER,
@@ -64,17 +64,15 @@ const config = {
   },
 };
 
-// Fail fast in production rather than running half-configured.
-function assertProductionConfig() {
-  if (!isProduction) return;
+// Names (never values) of settings the live booking system still needs. The public website
+// always runs; booking features switch themselves off until these are provided.
+function missingSettings() {
+  if (config.devMode) return [];
   const missing = [];
   if (!env.BASE_URL) missing.push('BASE_URL');
   if (config.db.client === 'mysql') for (const k of ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME']) if (!env[k]) missing.push(k);
   for (const k of ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'STRIPE_SECRET_KEY', 'STRIPE_WEBHOOK_SECRET']) if (!env[k]) missing.push(k);
-  if (missing.length) {
-    console.error(`Missing required environment variables: ${missing.join(', ')}. See .env.example.`);
-    process.exit(1);
-  }
+  return missing;
 }
 
-module.exports = { config, assertProductionConfig };
+module.exports = { config, missingSettings };
