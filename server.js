@@ -171,6 +171,8 @@ function start() {
   });
 }
 
-if (require.main === module) start();
+// Always start: Hostinger's LiteSpeed runner loads this file with require(), so a
+// `require.main === module` check would leave the app loaded but never listening (503).
+start();
 
 module.exports = { app, start };

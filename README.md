@@ -14,7 +14,7 @@ npm run create-admin -- you@example.com "Your Name"   # asks for a password (12+
 npm start                                              # http://localhost:3000
 ```
 
-Locally, with no other settings, the app uses a SQLite file (`data/dev.sqlite3`). For testing without Stripe or SMTP, put `DEV_MODE=true` in `.env`: payments then go through a **test checkout page** and emails (confirmations, sign-in links) are **printed in the terminal**. Test mode must be switched on explicitly and never runs with `NODE_ENV=production`, so a live site can't accidentally accept fake payments; without Stripe settings, online booking is simply disabled with a message to email instead. Put real settings in `.env` (copy `.env.example`) to use MySQL, Stripe test mode or SMTP locally.
+For local testing put `DEV_MODE=true` in `.env`: the app then uses a SQLite file (`data/dev.sqlite3`) instead of MySQL, payments go through a **test checkout page** and emails (confirmations, sign-in links) are **printed in the terminal**. Without test mode the app always uses MySQL. Test mode must be switched on explicitly and never runs with `NODE_ENV=production`, so a live site can't accidentally accept fake payments; without Stripe settings, online booking is simply disabled with a message to email instead. Put real settings in `.env` (copy `.env.example`) to use MySQL, Stripe test mode or SMTP locally.
 
 ## Deploy on Hostinger
 

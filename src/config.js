@@ -16,7 +16,9 @@ const config = {
   baseUrl: (env.BASE_URL || `http://localhost:${int(env.PORT, 3000)}`).replace(/\/$/, ''),
 
   db: {
-    client: env.DB_CLIENT || (isProduction || env.DB_HOST ? 'mysql' : 'sqlite'),
+    // SQLite is for local testing only (test mode or DB_CLIENT=sqlite); servers always use MySQL,
+    // since files inside the app folder are replaced on every deploy.
+    client: env.DB_CLIENT || (env.DEV_MODE === 'true' && !isProduction ? 'sqlite' : 'mysql'),
     host: env.DB_HOST || '127.0.0.1',
     port: int(env.DB_PORT, 3306),
     user: env.DB_USER,
