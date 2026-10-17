@@ -37,7 +37,7 @@ function validateStay({ apartment: apartmentId, checkIn, checkOut, guests }, { a
   const errors = {};
   const apt = getApartment(apartmentId);
   const count = Number.parseInt(guests, 10);
-  if (!apt) errors.apartment = 'Please choose an apartment.';
+  if (!apt) errors.apartment = 'Please choose a room.';
   if (!isIsoDate(checkIn)) errors.checkIn = 'Please choose a check-in date.';
   else if (!allowPast && checkIn < athensToday()) errors.checkIn = 'Check-in cannot be in the past.';
   else if (checkIn > addDays(athensToday(), config.booking.maxAdvanceDays)) errors.checkIn = 'That date is too far ahead to book online. Please email us.';
@@ -139,7 +139,7 @@ async function startWebsiteBooking({ stay, guest, arrivalTime, specialRequests, 
   const booking = await db.transaction(async (trx) => {
     await lockApartment(trx, stay.apartmentId);
     if (!(await isAvailable(trx, stay.apartmentId, stay.checkIn, stay.checkOut))) {
-      throw new BookingError({ checkIn: `Sorry, ${apartment.name} is no longer available for those dates. Please choose other dates or another apartment.` }, 409);
+      throw new BookingError({ checkIn: `Sorry, ${apartment.name} is no longer available for those dates. Please choose other dates or another room.` }, 409);
     }
     const guestId = await upsertGuest(trx, guest, { privacyAck: true, marketing });
     const row = {
@@ -350,7 +350,7 @@ async function cancelBooking(bookingId, { by, actorId = null, refundCents = 0, r
 function stayRows(b, apartmentName) {
   return [
     ['Reference', b.reference],
-    ['Apartment', apartmentName],
+    ['Room', apartmentName],
     ['Check-in', `${b.check_in} from 15:00`],
     ['Check-out', `${b.check_out} by 11:00`],
     ['Nights', String(b.nights)],

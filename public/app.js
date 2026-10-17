@@ -7,7 +7,24 @@
   const estimate = document.getElementById('estimate');
   let apartments = [];
 
+  document.documentElement.classList.add('js');
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll reveals: sections rise into view as you move from the facade inwards.
+  const reveal = (el) => el.classList.add('is-visible');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          reveal(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(reveal);
+  }
 
   // Respect reduced-motion: show the house video's first frame instead of playing it.
   const introVideo = document.querySelector('.intro-video');
@@ -49,12 +66,14 @@
             <figcaption class="photo-caption">${escapeHtml(a.photoCaption)}</figcaption>
           </figure>
           <div class="apartment-body">
+            <p class="room-named">${escapeHtml(a.namedAfter || '')}</p>
             <h3>${escapeHtml(a.name)}</h3>
             <div class="apartment-meta">
               <span>${a.size} m²</span>
               <span>Up to ${a.guests} guests</span>
               <span>${escapeHtml(a.beds)}</span>
             </div>
+            <p class="room-story">${escapeHtml(a.story || '')}</p>
             <p class="apartment-summary">${escapeHtml(a.summary)}</p>
             <p class="apartment-description">${escapeHtml(a.description)}</p>
             <dl class="old-new">
@@ -64,7 +83,7 @@
             <ul class="features">${a.features.map((f) => `<li>${escapeHtml(f)}</li>`).join('')}</ul>
             <div class="apartment-footer">
               <span class="price">${euro(a.price)} <small>/ night</small></span>
-              <a href="#book" class="btn btn-primary" data-book="${a.id}">Book this</a>
+              <a href="#book" class="btn btn-primary" data-book="${a.id}">Book this room</a>
             </div>
           </div>
         </article>`
@@ -94,7 +113,7 @@
     })
     .catch(() => {
       document.getElementById('apartment-grid').innerHTML =
-        '<p class="loading">We couldn\'t load the apartments right now. Please refresh the page.</p>';
+        '<p class="loading">We couldn\'t load the rooms right now. Please refresh the page.</p>';
     });
 
   // Things-to-do filters
@@ -191,7 +210,7 @@
       availability.classList.toggle('is-free', free);
       availability.textContent = free
         ? '✓ Available for your dates'
-        : 'Sorry, these dates are not available for this apartment. Please try other dates or another apartment.';
+        : 'Sorry, these dates are not available for this room. Please try other dates or another room.';
     } catch {
       availability.hidden = true;
     }

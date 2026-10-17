@@ -44,8 +44,8 @@
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
-  "apt-lycabettus-loft": {
-    "src": "/images/apt-lycabettus-loft.webp",
+  "apt-seferis-suite": {
+    "src": "/images/apt-seferis-suite.webp",
     "alt": "The new rooftop pergola terrace above the ochre facade",
     "title": null,
     "page": null,
@@ -53,8 +53,8 @@
     "license": null,
     "licenseUrl": null
   },
-  "apt-strefi-suite": {
-    "src": "/images/apt-strefi-suite.webp",
+  "apt-elytis-room": {
+    "src": "/images/apt-elytis-room.webp",
     "alt": "An upper-floor balcony with tall grey shutters",
     "title": null,
     "page": null,
@@ -71,8 +71,8 @@
     "license": null,
     "licenseUrl": null
   },
-  "apt-exarchia-family": {
-    "src": "/images/apt-exarchia-family.webp",
+  "apt-palamas-apartment": {
+    "src": "/images/apt-palamas-apartment.webp",
     "alt": "The central stair rising between the two wings of the house",
     "title": null,
     "page": null,
@@ -80,8 +80,8 @@
     "license": null,
     "licenseUrl": null
   },
-  "apt-courtyard-garden": {
-    "src": "/images/apt-courtyard-garden.webp",
+  "apt-kallidromiou-room": {
+    "src": "/images/apt-kallidromiou-room.webp",
     "alt": "Stone garden steps planted with lavender beside the house",
     "title": null,
     "page": null,
@@ -89,8 +89,8 @@
     "license": null,
     "licenseUrl": null
   },
-  "apt-neoclassical": {
-    "src": "/images/apt-neoclassical.webp",
+  "apt-plaka-room": {
+    "src": "/images/apt-plaka-room.webp",
     "alt": "Tall shuttered windows of the original neoclassical house",
     "title": null,
     "page": null,
@@ -187,5 +187,14 @@
     "author": "Yair-haklai",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "facade": {
+    "src": "/images/unleash-athens-facade.webp",
+    "alt": "The neoclassical facade of Unleash Athens on Koumarianou Street, with tall grey shutters, a central stair, garden steps and light rooftop rooms",
+    "title": "Unleash Athens facade",
+    "page": null,
+    "author": "Unleash Athens",
+    "license": null,
+    "licenseUrl": null
   }
 }

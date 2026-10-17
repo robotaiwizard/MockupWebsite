@@ -337,7 +337,7 @@
         <div class="actions"><a class="btn btn-ghost" href="#/calendar?month=${shift(-1)}">←</a><a class="btn btn-ghost" href="#/calendar">Today</a><a class="btn btn-ghost" href="#/calendar?month=${shift(1)}">→</a></div>
       </div>
       <div class="cal-wrap"><div class="cal" style="grid-template-columns:170px repeat(${days.length}, minmax(28px, 1fr))">${cells.join('')}</div></div>
-      <p class="legend"><span><i style="background:var(--olive)"></i>Confirmed</span><span><i style="background:#c9a227"></i>Awaiting payment</span><span><i style="background:#b9b5a3"></i>Closed</span><span>Bars run from the afternoon of arrival to the morning of departure.</span></p>
+      <p class="legend"><span><i style="background:var(--gold-dark)"></i>Confirmed</span><span><i style="background:#c9a227"></i>Awaiting payment</span><span><i style="background:#b9b5a3"></i>Closed</span><span>Bars run from the afternoon of arrival to the morning of departure.</span></p>
       <section class="card" style="margin-top:24px">
         <h2>Close dates</h2>
         <p class="muted small">Block an apartment for maintenance or private use. Guests can't book closed dates.</p>

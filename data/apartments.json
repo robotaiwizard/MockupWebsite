@@ -1,7 +1,9 @@
 [
   {
-    "id": "lycabettus-loft",
-    "name": "Lycabettus Loft",
+    "id": "seferis-suite",
+    "name": "The Seferis Suite",
+    "namedAfter": "Named after the poet Giorgos Seferis",
+    "story": "Giorgos Seferis published his first collection, Strophe, in Athens in 1931, the decade our house was built. Like his early poems, the suite is spare, luminous and full of sky.",
     "floor": "4th floor",
     "size": 58,
     "guests": 2,
@@ -9,6 +11,8 @@
     "price": 165,
     "summary": "The most contemporary space in the house: a glass-fronted loft looking straight at Lycabettus.",
     "description": "Set back behind the neoclassical cornice, under the original roof timbers. Microcement floors, a low platform bed, a walk-in rain shower and full-height glass doors that open onto a 20 m² terrace facing Lycabettus.",
+    "original": "The original roof timbers",
+    "new": "Glass-fronted rooftop loft",
     "features": [
       "Private terrace",
       "Lycabettus view",
@@ -16,13 +20,13 @@
       "Underfloor heating",
       "Espresso machine"
     ],
-    "photoCaption": "The new rooftop pergola terrace",
-    "original": "The original roof timbers",
-    "new": "Glass-fronted rooftop loft"
+    "photoCaption": "The new rooftop pergola terrace"
   },
   {
-    "id": "strefi-suite",
-    "name": "Strefi Suite",
+    "id": "elytis-room",
+    "name": "The Elytis Room",
+    "namedAfter": "Named after the poet Odysseas Elytis",
+    "story": "Odysseas Elytis, the poet of light, first appeared in the Athens magazine Nea Grammata in 1935. His room catches the light all day, with a balcony that leans into the pines of Strefi Hill.",
     "floor": "3rd floor",
     "size": 52,
     "guests": 3,
@@ -30,6 +34,8 @@
     "price": 145,
     "summary": "Pared-back and olive-toned, with a balcony that leans into the pines of Strefi Hill.",
     "description": "Behind the tall original balcony doors: a calm suite of olive microcement, oak and linen. A built-in reading nook doubles as a day bed for a third guest, and the iron balcony looks straight into the trees across the street.",
+    "original": "Tall balcony doors and iron railing",
+    "new": "Olive microcement, oak and linen",
     "features": [
       "Hill-facing balcony",
       "Reading nook",
@@ -37,76 +43,13 @@
       "Full kitchenette",
       "Smart TV"
     ],
-    "photoCaption": "An upper-floor balcony",
-    "original": "Tall balcony doors and iron railing",
-    "new": "Olive microcement, oak and linen"
+    "photoCaption": "An upper-floor balcony"
   },
   {
-    "id": "neapoli-studio",
-    "name": "Neapoli Studio",
-    "floor": "2nd floor",
-    "size": 34,
-    "guests": 2,
-    "beds": "1 queen bed",
-    "price": 105,
-    "summary": "A compact, clever studio for couples who plan to spend their days out exploring.",
-    "description": "The original mosaic floor meets a single wall of built-in oak joinery that hides the kitchenette, wardrobe and a fold-down desk. Bright, uncluttered and quietly clever, with a tall window over Koumarianou Street.",
-    "features": [
-      "Original mosaic floor",
-      "Fold-down desk",
-      "Kitchenette",
-      "Walk-in shower",
-      "Blackout curtains"
-    ],
-    "photoCaption": "The garden entrance and its olive trees",
-    "original": "The encaustic mosaic floor",
-    "new": "Built-in oak joinery wall"
-  },
-  {
-    "id": "exarchia-family",
-    "name": "Exarchia Family Apartment",
-    "floor": "2nd floor",
-    "size": 78,
-    "guests": 5,
-    "beds": "2 bedrooms: 1 king, 2 singles + sofa bed",
-    "price": 210,
-    "summary": "The old reception rooms, opened up into one generous space for families and friends.",
-    "description": "We joined the formal rooms of the old house into a single open-plan living space with a full kitchen and a 2.4 m oak dining table, under the original ceiling roses. Two separate bedrooms; a travel cot and high chair are available on request.",
-    "features": [
-      "2 bedrooms",
-      "Full kitchen",
-      "Washing machine",
-      "Dining for 6",
-      "Cot on request"
-    ],
-    "photoCaption": "The central stair between the two wings",
-    "original": "Ceiling roses and double doors",
-    "new": "Open-plan kitchen and living"
-  },
-  {
-    "id": "courtyard-garden",
-    "name": "Courtyard Garden Apartment",
-    "floor": "Ground floor",
-    "size": 46,
-    "guests": 2,
-    "beds": "1 king bed",
-    "price": 135,
-    "summary": "Stone walls, steel and glass, opening onto the courtyard and its old lemon tree.",
-    "description": "Exposed stone from the original foundations, a step-free layout and steel-framed glass doors onto the shared courtyard, where the lemon tree planted by the first owners still bears fruit every winter.",
-    "features": [
-      "Courtyard access",
-      "Step-free entry",
-      "Bathtub",
-      "Kitchenette",
-      "Garden seating"
-    ],
-    "photoCaption": "Garden steps planted with lavender",
-    "original": "Stone foundation walls",
-    "new": "Steel-framed glass doors"
-  },
-  {
-    "id": "neoclassical",
-    "name": "The Neoclassical",
+    "id": "plaka-room",
+    "name": "The Plaka Room",
+    "namedAfter": "Named after the old quarter below the Acropolis",
+    "story": "Plaka is where Athens keeps its finest neoclassical mansions. With 3.6 m ceilings, original mouldings and restored shutters, this is the room where our 1930s house speaks loudest.",
     "floor": "1st floor",
     "size": 42,
     "guests": 2,
@@ -114,6 +57,8 @@
     "price": 120,
     "summary": "Where the old house and the new are most in dialogue.",
     "description": "The 3.6 m ceilings, plaster mouldings and restored wooden shutters of the original piano nobile, furnished with pieces by contemporary Greek designers and work by young Athenian artists. The house at its most dramatic.",
+    "original": "3.6 m ceilings, mouldings, shutters",
+    "new": "Contemporary Greek design and art",
     "features": [
       "3.6 m ceilings",
       "Original mouldings",
@@ -121,8 +66,75 @@
       "Kitchenette",
       "Air conditioning"
     ],
-    "photoCaption": "The tall windows of the original house",
-    "original": "3.6 m ceilings, mouldings, shutters",
-    "new": "Contemporary Greek design and art"
+    "photoCaption": "The tall windows of the original house"
+  },
+  {
+    "id": "neapoli-studio",
+    "name": "The Neapoli Studio",
+    "namedAfter": "Named after our neighbourhood",
+    "story": "Neapoli means “new town”: a quarter of family homes, bookshops and small squares climbing towards Strefi Hill. A compact studio for days spent out in it.",
+    "floor": "2nd floor",
+    "size": 34,
+    "guests": 2,
+    "beds": "1 queen bed",
+    "price": 105,
+    "summary": "A compact, clever studio for couples who plan to spend their days out exploring.",
+    "description": "The original mosaic floor meets a single wall of built-in oak joinery that hides the kitchenette, wardrobe and a fold-down desk. Bright, uncluttered and quietly clever, with a tall window over Koumarianou Street.",
+    "original": "The encaustic mosaic floor",
+    "new": "Built-in oak joinery wall",
+    "features": [
+      "Original mosaic floor",
+      "Fold-down desk",
+      "Kitchenette",
+      "Walk-in shower",
+      "Blackout curtains"
+    ],
+    "photoCaption": "The garden entrance and its olive trees"
+  },
+  {
+    "id": "palamas-apartment",
+    "name": "The Palamas Apartment",
+    "namedAfter": "Named after the poet Kostis Palamas",
+    "story": "Kostis Palamas was the grand old man of Greek poetry in 1930s Athens, and his home was always full of family, friends and young poets. Our largest apartment is made for gathering around one long table.",
+    "floor": "2nd floor",
+    "size": 78,
+    "guests": 5,
+    "beds": "2 bedrooms: 1 king, 2 singles + sofa bed",
+    "price": 210,
+    "summary": "The old reception rooms, opened up into one generous space for families and friends.",
+    "description": "We joined the formal rooms of the old house into a single open-plan living space with a full kitchen and a 2.4 m oak dining table, under the original ceiling roses. Two separate bedrooms; a travel cot and high chair are available on request.",
+    "original": "Ceiling roses and double doors",
+    "new": "Open-plan kitchen and living",
+    "features": [
+      "2 bedrooms",
+      "Full kitchen",
+      "Washing machine",
+      "Dining for 6",
+      "Cot on request"
+    ],
+    "photoCaption": "The central stair between the two wings"
+  },
+  {
+    "id": "kallidromiou-room",
+    "name": "The Kallidromiou Room",
+    "namedAfter": "Named after the street around the corner",
+    "story": "Every Saturday the farmers’ market fills Kallidromiou Street with fruit, herbs and neighbours. This garden-level room opens onto our courtyard and its old lemon tree.",
+    "floor": "Ground floor",
+    "size": 46,
+    "guests": 2,
+    "beds": "1 king bed",
+    "price": 135,
+    "summary": "Stone walls, steel and glass, opening onto the courtyard and its old lemon tree.",
+    "description": "Exposed stone from the original foundations, a step-free layout and steel-framed glass doors onto the shared courtyard, where the lemon tree planted by the first owners still bears fruit every winter.",
+    "original": "Stone foundation walls",
+    "new": "Steel-framed glass doors",
+    "features": [
+      "Courtyard access",
+      "Step-free entry",
+      "Bathtub",
+      "Kitchenette",
+      "Garden seating"
+    ],
+    "photoCaption": "Garden steps planted with lavender"
   }
 ]

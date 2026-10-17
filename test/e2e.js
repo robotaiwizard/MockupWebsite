@@ -56,7 +56,7 @@ async function startServer() {
 }
 
 async function run() {
-  const stay = { apartment: 'strefi-suite', checkIn: '2026-12-10', checkOut: '2026-12-13', guests: 2 };
+  const stay = { apartment: 'elytis-room', checkIn: '2026-12-10', checkOut: '2026-12-13', guests: 2 };
   let r = await call('a', 'GET', '/');
   check('home page loads', r.status === 200);
   r = await call('a', 'GET', '/healthz');
@@ -75,12 +75,12 @@ async function run() {
   check('test payment redirects to success', paid.status === 303);
   r = await call('a', 'GET', `/api/checkout/status?session_id=${sid}`);
   check('booking confirmed after payment', r.json.status === 'confirmed' && r.json.paid === 435);
-  r = await call('a', 'GET', '/api/availability?apartment=strefi-suite&from=2026-12-01&to=2026-12-31');
+  r = await call('a', 'GET', '/api/availability?apartment=elytis-room&from=2026-12-01&to=2026-12-31');
   check('availability shows the stay', r.json.unavailable.length === 1 && r.json.unavailable[0].start === '2026-12-10');
 
   const racers = await Promise.all(
     Array.from({ length: 12 }, (_, i) =>
-      call(`r${i}`, 'POST', '/api/bookings', { apartment: 'courtyard-garden', checkIn: '2027-03-01', checkOut: '2027-03-04', guests: 2, name: `Racer ${i}`, email: `racer${i}@example.com`, privacy: true }, { 'X-Forwarded-For': `10.0.0.${i}` }).then((x) => x.status)
+      call(`r${i}`, 'POST', '/api/bookings', { apartment: 'kallidromiou-room', checkIn: '2027-03-01', checkOut: '2027-03-04', guests: 2, name: `Racer ${i}`, email: `racer${i}@example.com`, privacy: true }, { 'X-Forwarded-For': `10.0.0.${i}` }).then((x) => x.status)
     )
   );
   check('simultaneous bookings: exactly one wins', racers.filter((s) => s === 201).length === 1);
@@ -116,14 +116,14 @@ async function run() {
   check('wrong admin password rejected', r.status === 401);
   r = await call('ad', 'POST', '/api/admin/login', { email: 'admin@unleashathens.com', password: env.ADMIN_PASSWORD });
   check('admin login', r.json.ok);
-  r = await call('ad', 'POST', '/api/admin/bookings', { apartment: 'lycabettus-loft', checkIn: '2026-12-20', checkOut: '2026-12-24', guests: 2, name: 'Carla Phone', email: 'carla@example.com', phone: '+30 210 1234567', payment: 'offline' });
+  r = await call('ad', 'POST', '/api/admin/bookings', { apartment: 'seferis-suite', checkIn: '2026-12-20', checkOut: '2026-12-24', guests: 2, name: 'Carla Phone', email: 'carla@example.com', phone: '+30 210 1234567', payment: 'offline' });
   check('admin creates offline booking', r.status === 201);
   const carlaId = r.json.id;
   r = await call('ad', 'POST', '/api/admin/bookings', { apartment: 'neapoli-studio', checkIn: '2027-01-05', checkOut: '2027-01-08', guests: 1, name: 'Dan Link', email: 'dan@example.com', payment: 'link', total: '300' });
   check('admin creates payment-link booking', r.status === 201 && r.json.checkoutUrl);
-  r = await call('ad', 'POST', '/api/admin/blocks', { apartment: 'lycabettus-loft', start: '2026-12-22', end: '2026-12-26', reason: 'Painting' });
+  r = await call('ad', 'POST', '/api/admin/blocks', { apartment: 'seferis-suite', start: '2026-12-22', end: '2026-12-26', reason: 'Painting' });
   check('closed dates refused over a booking', r.status === 409);
-  r = await call('ad', 'POST', '/api/admin/blocks', { apartment: 'lycabettus-loft', start: '2027-02-01', end: '2027-02-05', reason: 'Painting' });
+  r = await call('ad', 'POST', '/api/admin/blocks', { apartment: 'seferis-suite', start: '2027-02-01', end: '2027-02-05', reason: 'Painting' });
   check('closed dates created', r.status === 201);
   r = await call('ad', 'PATCH', `/api/admin/bookings/${carlaId}`, { checkIn: '2027-01-31', checkOut: '2027-02-03' });
   check('edit onto closed dates refused', r.status === 409);

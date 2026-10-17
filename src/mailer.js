@@ -26,22 +26,22 @@ function layout({ heading, intro, rows = [], button, footer }) {
     ? `<table cellpadding="7" style="border-collapse:collapse;font-size:14px;margin:16px 0">${rows
         .map(
           ([k, v]) =>
-            `<tr><td style="color:#64655a;border-bottom:1px solid #dcdac5;vertical-align:top">${escapeHtml(k)}</td>` +
-            `<td style="border-bottom:1px solid #dcdac5;white-space:pre-wrap">${escapeHtml(v)}</td></tr>`
+            `<tr><td style="color:#62676f;border-bottom:1px solid #e0dcd3;vertical-align:top">${escapeHtml(k)}</td>` +
+            `<td style="border-bottom:1px solid #e0dcd3;white-space:pre-wrap">${escapeHtml(v)}</td></tr>`
         )
         .join('')}</table>`
     : '';
   const cta = button
-    ? `<p style="margin:24px 0"><a href="${escapeHtml(button.url)}" style="background:#a9532f;color:#faf8f1;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:bold">${escapeHtml(button.label)}</a></p>`
+    ? `<p style="margin:24px 0"><a href="${escapeHtml(button.url)}" style="background:#1f2f47;color:#f8f6f1;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:bold">${escapeHtml(button.label)}</a></p>`
     : '';
   return (
-    `<div style="font-family:Arial,Helvetica,sans-serif;color:#2a2b21;max-width:560px;margin:0 auto;padding:24px">` +
-    `<p style="font-family:Georgia,serif;font-size:22px;margin:0 0 20px">Unleash <em style="color:#a9532f">Athens</em></p>` +
+    `<div style="font-family:Arial,Helvetica,sans-serif;color:#24272c;max-width:560px;margin:0 auto;padding:24px">` +
+    `<p style="font-family:Georgia,serif;font-size:22px;margin:0 0 20px">Unleash <em style="color:#b08d57">Athens</em></p>` +
     `<h2 style="font-family:Georgia,serif;font-weight:normal;margin:0 0 12px">${escapeHtml(heading)}</h2>` +
     (intro ? `<p style="line-height:1.6">${escapeHtml(intro)}</p>` : '') +
     table +
     cta +
-    `<p style="font-size:12px;color:#64655a;line-height:1.6;margin-top:28px">${escapeHtml(
+    `<p style="font-size:12px;color:#62676f;line-height:1.6;margin-top:28px">${escapeHtml(
       footer || 'Unleash Athens · Koumarianou 23, 114 73 Athens, Greece · info@unleashathens.com'
     )}</p></div>`
   );
